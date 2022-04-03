@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useMediaQuery,useTheme } from "@mui/material";
+import Desktopcategories from "./components/Desktopcategories";
+import Header from "./components/Header";
+import MobileCategories from "./components/MobileCategories";
+import Navbar from "./components/Navbar";
+import ProductContainer from "./components/ProductContainer";
+import ProductList from "./components/ProductList";
+
 
 function App() {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <Navbar/>
+   <Header/>
+   <ProductContainer/>
+   {matches? <MobileCategories/>:<Desktopcategories/>}
+   <ProductList/>
+  
+  
+   </>
   );
 }
 
